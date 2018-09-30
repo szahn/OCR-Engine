@@ -1,0 +1,26 @@
+syntax = "proto3";
+package service;
+
+message Block {
+	int32 x1 = 1;
+	int32 y1 = 2;
+	int32 x2 = 3;
+	int32 y2 = 4;
+	int32 page = 5;
+	string tag = 6;
+	bool hasBox = 7;
+    string text = 8;
+	string confidence = 9;
+}
+
+message OCRRequest {
+	string filename = 1;
+}
+
+message OCRResponse {
+	repeated Block blocks = 1;
+}
+
+service OCRService {
+    rpc OCR (OCRRequest) returns (OCRResponse) {}
+}
